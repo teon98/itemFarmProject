@@ -32,7 +32,7 @@ public class UnstoringInsertController implements CommonInterface {
 		
 		// 세션으로부터 Company 정보 받기
 		CompanyVO companyVO = new CompanyVO();
-		int company_id = (int) session.getAttribute("comId"); // ★나중에 로그인 및 세션-setAttribute 전부 되면 그때 사용
+		int company_id = (int) session.getAttribute("comId");
 		companyVO.setCompany_id(company_id); 
 		
 		// 세션으로부터 Manager 정보 받기 (참조: LoginCheckController)
@@ -53,6 +53,7 @@ public class UnstoringInsertController implements CommonInterface {
 			// 2. form 양식
 			UnstoringVO unstoringVO = makeUnstoringVO(request);
 			UnstoringDetailVO unstoringDetailVO = makeUnstoringDetailVO(request);
+			int resultInsert = 0;
 			
 			
 			//////////////////////////// 주문번호 만들기 ////////////////////////////
@@ -85,11 +86,14 @@ public class UnstoringInsertController implements CommonInterface {
 			
 
 			// 용희 : Insert 문장 2개라서 각각 실행하였음.  
-			int resultInsert = service.unstoringInsert(unstoringVO, unstoringDetailVO);
+			resultInsert = service.unstoringInsert(unstoringVO, unstoringDetailVO);
 			System.out.println("Insert 컨트롤러: "+resultInsert);
-			session.setAttribute("resultInsert", resultInsert);
+			session.setAttribute("resultInsert", resultInsert); 
+//			request.setAttribute("resultInsert", resultInsert);
 
-			page = "redirect:/unstoring/unstoringInsert.do";
+//			page = "redirect:/unstoring/unstoringInsert.do";
+//			page = "/unstoring/unstoringInsert.do";
+			page = "/unstoring/unstoring_insert.jsp";
 		}
 
 		return page;
