@@ -176,8 +176,7 @@
 	  
 	  //두 번째 차트 만들기
 	  const ctx2 = document.getElementById('myChart2');
-	  
-	  //const labels = ['1','2','3','4','5','6','7'];
+	 
 	  const data = {
 	    labels: labels2,
 	    datasets: [
@@ -220,11 +219,9 @@
 		      y1: {
 		        type: 'linear',
 		        display: true,
-		        position: 'right',
-
-		        // grid line settings
+		        position: 'right',s
 		        grid: {
-		          drawOnChartArea: false, // only want the grid lines for one axis to show up
+		          drawOnChartArea: false,
 		        },
 		      },
 		    }
